@@ -1,13 +1,12 @@
 #!/bin/bash
 
-set -x -e -o pipefail
+set -e -o pipefail
 
 function gettag() {
     python3 -c 'import sys; import json; print(json.loads(sys.stdin.read())[0]["tag_name"])'
 }
 
 rel="https://api.github.com/repos/actions/runner/releases"
-curl -X GET "${rel}"
 tag=$(curl -s -X GET "${rel}" | gettag)
 tar="actions-runner-linux-x64-${tag:1}.tar.gz"
 url="https://github.com/actions/runner/releases/download/${tag}/${tar}"
