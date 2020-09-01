@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e -o pipefail
+set -x -e -o pipefail
 
 function gettag() {
     python3 -c 'import sys; import json; print(json.loads(sys.stdin.read())[0]["tag_name"])'
