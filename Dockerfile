@@ -1,7 +1,7 @@
-FROM quay.io/enarx/fedora
+FROM ubuntu:latest
 
-RUN dnf -y update
-RUN dnf -y install iputils
+RUN apt -y update
+RUN apt -y upgrade
 
 COPY start.sh /root/
 CMD /root/start.sh
